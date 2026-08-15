@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Painel do cliente RustikCG.">
+    <title>Meu Perfil | RustikCG</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Staatliches&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="internal-page profile-page">
+    <header>
+        <div class="header-content">
+            <nav class="nav-links">
+                <a href="index.html#vantagens">Vantagens</a>
+                <a href="index.html#itens">Inventário</a>
+            </nav>
+
+            <a class="logo-container" href="index.html" aria-label="Ir para a página inicial">
+                <img src="rustikcg-logo.png" alt="RustikCG Logo">
+            </a>
+
+            <nav class="nav-links">
+                <a href="index.html#galeria">Galeria</a>
+                <a href="index.html#agenda">Agenda</a>
+                <a class="btn-login-bruto is-active" href="perfil.html">Painel</a>
+            </nav>
+            <button class="menu-toggle" type="button" aria-label="Abrir menu" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav">
+        <button class="close-menu" type="button" aria-label="Fechar menu" onclick="toggleMenu()">&times;</button>
+        <a class="logo-container" href="index.html" aria-label="Ir para a página inicial">
+            <img src="rustikcg-logo.png" alt="RustikCG Logo">
+        </a>
+        <a href="index.html#vantagens">VANTAGENS</a>
+        <a href="index.html#itens">INVENTÁRIO</a>
+        <a href="index.html#galeria">GALERIA</a>
+        <a href="index.html#agenda">AGENDA</a>
+        <a class="btn-login-bruto" href="perfil.html">PAINEL</a>
+    </div>
+
+    <main class="dashboard-main">
+        <div class="dashboard-heading">
+            <div>
+                <span class="eyebrow">// PAINEL DO CLIENTE</span>
+                <h1>MINHA CONTA</h1>
+            </div>
+            <p>Gerencie seus dados pessoais e acompanhe sua relação com o espaço.</p>
+        </div>
+
+        <div class="dashboard-layout">
+            <aside class="user-sidebar" aria-label="Menu do usuário">
+                <div class="sidebar-user-mini">
+                    <div class="mini-avatar" aria-hidden="true">JS</div>
+                    <div>
+                        <strong>JOÃO DA SILVA</strong>
+                        <span>CLIENTE RUSTIKCG</span>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <button class="sidebar-item active" type="button" data-panel="profilePanel">
+                        <span class="sidebar-icon" aria-hidden="true">●</span>
+                        <span>PERFIL</span>
+                    </button>
+                    <button class="sidebar-item" type="button" data-panel="settingsPanel">
+                        <span class="sidebar-icon" aria-hidden="true">⚙</span>
+                        <span>CONFIGURAÇÕES</span>
+                    </button>
+                    <button class="sidebar-item" type="button" data-panel="historyPanel">
+                        <span class="sidebar-icon" aria-hidden="true">▤</span>
+                        <span>HISTÓRICO</span>
+                    </button>
+                    <a class="sidebar-item sidebar-logout" href="login.html" id="logoutButton">
+                        <span class="sidebar-icon" aria-hidden="true">↪</span>
+                        <span>SAIR</span>
+                    </a>
+                </nav>
+
+                <div class="sidebar-note">
+                    <span>// SUPORTE</span>
+                    <p>Precisa alterar algo que não aparece aqui? Fale com a equipe.</p>
+                </div>
+            </aside>
+
+            <section class="dashboard-content">
+                <div class="dashboard-panel active" id="profilePanel">
+                    <div class="profile-header-card">
+                        <div class="profile-photo-wrap">
+                            <div class="profile-photo" role="img" aria-label="Foto de perfil de João da Silva">
+                                <svg viewBox="0 0 160 160" aria-hidden="true">
+                                    <circle cx="80" cy="58" r="31"></circle>
+                                    <path d="M24 143c5-34 25-53 56-53s51 19 56 53"></path>
+                                </svg>
+                            </div>
+                            <button class="photo-action" type="button" title="Alterar foto">+</button>
+                        </div>
+                        <div class="profile-title">
+                            <span class="eyebrow">CADASTRO #RCG-0248</span>
+                            <h2>JOÃO DA SILVA</h2>
+                            <p>Cadastro ativo desde março de 2026</p>
+                        </div>
+                        <button class="btn-outline-rustik" type="button" id="editProfileButton">EDITAR PERFIL</button>
+                    </div>
+
+                    <div class="panel-section-heading">
+                        <div>
+                            <span class="eyebrow">// DADOS PESSOAIS</span>
+                            <h3>INFORMAÇÕES DO PERFIL</h3>
+                        </div>
+                        <span class="profile-status">● CADASTRO ATIVO</span>
+                    </div>
+
+                    <form class="profile-form" id="profileForm">
+                        <div class="profile-field">
+                            <label for="fullName">NOME COMPLETO</label>
+                            <input id="fullName" value="João da Silva" disabled>
+                        </div>
+                        <div class="profile-field small-field">
+                            <label for="age">IDADE</label>
+                            <input id="age" value="32 anos" disabled>
+                        </div>
+                        <div class="profile-field">
+                            <label for="city">CIDADE</label>
+                            <input id="city" value="Campo Grande" disabled>
+                        </div>
+                        <div class="profile-field small-field">
+                            <label for="state">ESTADO</label>
+                            <input id="state" value="MS" disabled>
+                        </div>
+                        <div class="profile-field">
+                            <label for="profileEmail">E-MAIL</label>
+                            <input id="profileEmail" type="email" value="joao.silva@email.com" disabled>
+                        </div>
+                        <div class="profile-field">
+                            <label for="phone">TELEFONE</label>
+                            <input id="phone" value="(67) 9 9123-4567" disabled>
+                        </div>
+                        <div class="profile-field wide-field">
+                            <label for="profession">PROFISSÃO</label>
+                            <input id="profession" value="Analista de Sistemas" disabled>
+                        </div>
+
+                        <div class="form-divider"><span>ENDEREÇO DE RESIDÊNCIA</span></div>
+
+                        <div class="profile-field address-field">
+                            <label for="address">ENDEREÇO</label>
+                            <input id="address" value="Rua das Acácias" disabled>
+                        </div>
+                        <div class="profile-field number-field">
+                            <label for="number">NÚMERO</label>
+                            <input id="number" value="245" disabled>
+                        </div>
+                        <div class="profile-field cep-field">
+                            <label for="cep">CEP</label>
+                            <input id="cep" value="79000-000" disabled>
+                        </div>
+                        <div class="profile-field complement-field">
+                            <label for="complement">COMPLEMENTO</label>
+                            <input id="complement" value="Casa 02" disabled>
+                        </div>
+
+                        <div class="profile-form-actions" id="profileFormActions">
+                            <button class="btn-outline-rustik" type="button" id="cancelEditButton">CANCELAR</button>
+                            <button class="btn-rustik-primary compact" type="submit">SALVAR ALTERAÇÕES</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="dashboard-panel" id="settingsPanel">
+                    <div class="panel-section-heading">
+                        <div>
+                            <span class="eyebrow">// PREFERÊNCIAS</span>
+                            <h3>CONFIGURAÇÕES</h3>
+                        </div>
+                    </div>
+                    <div class="settings-list">
+                        <label class="setting-row">
+                            <div><strong>LEMBRETES DE RESERVA</strong><span>Receber avisos sobre datas e alterações.</span></div>
+                            <input type="checkbox" checked>
+                        </label>
+                        <label class="setting-row">
+                            <div><strong>NOVIDADES RUSTIKCG</strong><span>Receber novidades e datas disponíveis.</span></div>
+                            <input type="checkbox">
+                        </label>
+                        <div class="setting-row">
+                            <div><strong>SENHA DE ACESSO</strong><span>Última alteração há 3 meses.</span></div>
+                            <button class="btn-outline-rustik" type="button">ALTERAR SENHA</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-panel" id="historyPanel">
+                    <div class="panel-section-heading">
+                        <div>
+                            <span class="eyebrow">// LOCAÇÕES</span>
+                            <h3>HISTÓRICO</h3>
+                        </div>
+                    </div>
+                    <div class="history-list">
+                        <article class="history-item">
+                            <div class="history-date"><strong>18</strong><span>JUL 2026</span></div>
+                            <div><h4>ANIVERSÁRIO — EVENTO PARTICULAR</h4><p>Período: 16:00 às 22:00 · 38 convidados</p></div>
+                            <span class="history-badge completed">CONCLUÍDO</span>
+                        </article>
+                        <article class="history-item">
+                            <div class="history-date"><strong>12</strong><span>SET 2026</span></div>
+                            <div><h4>CONFRATERNIZAÇÃO</h4><p>Período: 15:00 às 22:00 · 45 convidados</p></div>
+                            <span class="history-badge scheduled">AGENDADO</span>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">RUSTIKCG</div>
+                <p>Campo Grande, MS | (67) 9 9988-7766</p>
+            </div>
+            <div>
+                <h3>NEWSLETTER</h3>
+                <p>Receba datas disponíveis.</p>
+                <input type="text" placeholder="Seu e-mail" class="news-input">
+                <button class="btn-login-bruto footer-button" type="button">CADASTRAR</button>
+            </div>
+            <div>
+                <h3>REGRAS</h3>
+                <p>• Som até 22:00</p>
+                <p>• Limite 60 pessoas</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>

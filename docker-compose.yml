@@ -1,0 +1,79 @@
+services:
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: rustikcg_frontend
+
+    ports:
+      - "8080:80"
+
+    # environment:
+    #   API_URL: http://backend:8000
+
+    depends_on:
+      - backend
+
+    networks:
+      - frontend_network
+
+    restart: unless-stopped
+
+
+  backend:
+    build:
+      context: ./backend
+    container_name: rustikcg_backend
+
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: ${POSTGRES_DB}
+      DATABASE_USER: ${POSTGRES_USER}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    networks:
+      - frontend_network
+      - backend_network
+
+    restart: unless-stopped
+
+
+  db:
+    image: postgres:17-alpine
+    container_name: rustikcg_postgres
+
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    networks:
+      - backend_network
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    restart: unless-stopped
+
+
+networks:
+
+  frontend_network:
+
+  backend_network:
+    internal: true
+
+
+volumes:
+  postgres_data:

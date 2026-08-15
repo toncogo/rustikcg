@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RustikCG | Festas & Eventos</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Staatliches&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <nav class="nav-links">
+                <a href="#vantagens">Vantagens</a>
+                <a href="#itens">Inventário</a>
+            </nav>
+            
+            <div class="logo-container">
+                <img src="rustikcg-logo.png" alt="RustikCG Logo">
+            </div>
+
+            <nav class="nav-links">
+                <a href="#galeria">Galeria</a>
+                <a href="#agenda">Agenda</a>
+                <a class="btn-login-bruto" href="login.html">PAINEL</a>
+            </nav>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav">
+        <div class="close-menu" onclick="toggleMenu()">&times;</div>
+        <div class="logo-container" style="margin-bottom: 20px;">
+            <img src="rustikcg-logo.png" alt="RustikCG Logo">
+        </div>
+        <a href="#vantagens" onclick="toggleMenu()">VANTAGENS</a>
+        <a href="#itens" onclick="toggleMenu()">INVENTÁRIO</a>
+        <a href="#galeria" onclick="toggleMenu()">GALERIA</a>
+        <a href="#agenda" onclick="toggleMenu()">AGENDA</a>
+        <a class="btn-login-bruto" href="login.html">PAINEL</a>
+    </div>
+
+    <section class="hero">
+        <h1>RUSTIK CG</h1>
+        <p style="font-family: 'Special Elite'; background: var(--iron); padding: 5px 25px;">BRUTO. RÚSTICO. SISTEMÁTICO.</p>
+    </section>
+
+    <section id="vantagens">
+        <h2 class="section-title">// VANTAGENS</h2>
+        <div class="grid">
+            <div class="card"><h3>CONEXÃO REAL</h3><p>Ambiente rústico autêntico que desconecta você do urbano.</p></div>
+            <div class="card"><h3>INFRAESTRUTURA</h3><p>Equipamentos profissionais para que seu evento seja impecável.</p></div>
+            <div class="card"><h3>PRIVACIDADE</h3><p>Espaço exclusivo e cercado para sua total liberdade.</p></div>
+        </div>
+    </section>
+
+    <section id="itens">
+        <h2 class="section-title">// AMBIENTE</h2>
+        <div class="grid">
+            <div class="card"><h4>🍖 CHURRASQUEIRA</h4><p>Industrial completa com kit de espetos.</p></div>
+            <div class="card"><h4>🏊 PISCINA</h4><p>Alvenaria com borda em pedra e LED.</p></div>
+            <div class="card"><h4>🍺 CERVEJEIRA</h4><p>Bebida no ponto sistemático de -6°C.</p></div>
+        </div>
+    </section>
+
+    <section id="galeria">
+        <h2 class="section-title">// GALERIA</h2>
+        <div class="gallery-grid">
+            <img src="fotos/rustik5.jpg" class="gallery-img">
+            <img src="fotos/rustik6.png" class="gallery-img">
+            <img src="fotos/rustik4.jpg" class="gallery-img">
+        </div>
+    </section>
+
+    <section id="seguranca">
+        <div class="safety-strip">
+            <div style="width: 100px; height: 100px; border: 5px solid var(--danger); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Special Elite'; color: var(--danger); font-weight: bold; transform: rotate(-15deg); text-align: center;">ALVARÁ</div>
+            <div>
+                <h2>SEGURANÇA SISTEMÁTICA</h2>
+                <p>Espaço adequado às normas vigentes de proteção.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="agenda">
+        <h2 class="section-title">// AGENDA</h2>
+        <div class="cal-wrapper">
+            <div class="cal-header">
+                <button class="btn-cal" onclick="changeMonth(-1)">&lt;</button>
+                <div id="monthDisplay"></div>
+                <button class="btn-cal" onclick="changeMonth(1)">&gt;</button>
+            </div>
+            <div class="cal-grid" id="calendarGrid"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div style="font-family: 'Special Elite'; font-size: 2rem; color: var(--accent-gold); margin-bottom: 20px;">RUSTIKCG</div>
+                <p>Campo Grande, MS | (67) 9 9988-7766</p>
+            </div>
+            <div>
+                <h3>NEWSLETTER</h3>
+                <p>Receba datas disponíveis.</p>
+                <input type="text" placeholder="Seu e-mail" class="news-input">
+                <button class="btn-login-bruto" style="width: 100%;">CADASTRAR</button>
+            </div>
+            <div>
+                <h3>REGRAS</h3>
+                <p>• Som até 22:00</p>
+                <p>• Limite 60 pessoas</p>
+            </div>
+        </div>
+    </footer>
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Acesse o painel do cliente RustikCG para consultar seu perfil e histórico de locações.">
+    <title>Login | RustikCG</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Staatliches&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        font-family: 'Roboto Mono', monospace;
+    }
+</style>
+<body class="internal-page login-page">
+    <main class="login-main">
+        <section class="login-shell" aria-labelledby="loginTitle">
+            <div class="login-visual" aria-hidden="true">
+                <div class="login-visual-content">
+                    <span class="eyebrow">// ÁREA DO CLIENTE</span>
+                    <h1>SEU EVENTO,<br>SEU ESPAÇO.</h1>
+                    <p>Acompanhe seus dados e mantenha suas informações organizadas em um painel com a identidade RustikCG.</p>
+                    <div class="rustik-stamp">ACESSO<br>RESTRITO</div>
+                </div>
+            </div>
+
+            <div class="login-card">
+                <div class="login-card-heading">
+                    <span class="eyebrow">IDENTIFICAÇÃO</span>
+                    <h2 id="loginTitle">ENTRAR NO PAINEL</h2>
+                    <p>Informe seus dados para acessar sua área.</p>
+                </div>
+
+                <form id="loginForm" class="auth-form">
+                    <div class="form-field">
+                        <label for="email">E-MAIL</label>
+                        <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="password">SENHA</label>
+                        <div class="password-field">
+                            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" minlength="4" required>
+                            <button class="password-toggle" type="button" id="passwordToggle" aria-label="Mostrar senha">MOSTRAR</button>
+                        </div>
+                    </div>
+
+                    <div class="auth-options">
+                        <label class="check-option">
+                            <input type="checkbox" name="remember">
+                            <span>Manter conectado</span>
+                        </label>
+                        <a href="#" class="text-link" onclick="return false;">Esqueci minha senha</a>
+                    </div>
+
+                    <button class="btn-rustik-primary" type="submit">ENTRAR NO PAINEL <span aria-hidden="true">→</span></button>
+                    <p class="login-feedback" id="loginFeedback" role="status" aria-live="polite"></p>
+                </form>
+
+                <div class="login-help">
+                    <span>PRIMEIRO ACESSO?</span>
+                    <p>Entre em contato com a equipe RustikCG para ativação do seu cadastro.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>
