@@ -550,3 +550,5 @@ Deploy          🔴 Planejado
 Este projeto é de uso privado e está atualmente em desenvolvimento.
 
 Todos os direitos reservados.
+
+By @toncogo
