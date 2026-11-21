@@ -1,4 +1,4 @@
-export const env = {
+const env = {
   port: process.env.PORT || 8000,
 
   database: {
@@ -11,3 +11,5 @@ export const env = {
 
   nodeEnv: process.env.NODE_ENV || 'development'
 };
+
+module.exports = { env };

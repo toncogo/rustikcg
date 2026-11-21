@@ -6,7 +6,7 @@ services:
     container_name: rustikcg_frontend
 
     ports:
-      - "8080:80"
+      - "8000:80"
 
     # environment:
     #   API_URL: http://backend:8000

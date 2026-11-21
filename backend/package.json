@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Backend do projeto RustikCG",
   "main": "src/server.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js"
