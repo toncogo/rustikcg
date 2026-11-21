@@ -9,6 +9,7 @@
 </head>
 <body>
     <header>
+        <!-- HEADER / MAIN MENU -->
         <div class="header-content">
             <nav class="nav-links">
                 <a href="#vantagens">Vantagens</a>
@@ -24,27 +25,29 @@
                 <a href="#agenda">Agenda</a>
                 <a class="btn-login-bruto" href="login.html">PAINEL</a>
             </nav>
-            <div class="menu-toggle" onclick="toggleMenu()">
+            <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
         </div>
     </header>
 
+    <!-- MOBILE MENU -->
     <div class="mobile-nav" id="mobileNav">
-        <div class="close-menu" onclick="toggleMenu()">&times;</div>
-        <div class="logo-container" style="margin-bottom: 20px;">
+        <div class="close-menu"">&times;</div>
+        <div class="logo-container">
             <img src="rustikcg-logo.png" alt="RustikCG Logo">
         </div>
-        <a href="#vantagens" onclick="toggleMenu()">VANTAGENS</a>
-        <a href="#itens" onclick="toggleMenu()">INVENTÁRIO</a>
-        <a href="#galeria" onclick="toggleMenu()">GALERIA</a>
-        <a href="#agenda" onclick="toggleMenu()">AGENDA</a>
+        <a href="#vantagens">VANTAGENS</a>
+        <a href="#itens">INVENTÁRIO</a>
+        <a href="#galeria">GALERIA</a>
+        <a href="#agenda">AGENDA</a>
         <a class="btn-login-bruto" href="login.html">PAINEL</a>
     </div>
 
+    <!-- HERO -->
     <section class="hero">
         <h1>RUSTIK CG</h1>
-        <p style="font-family: 'Special Elite'; background: var(--iron); padding: 5px 25px;">BRUTO. RÚSTICO. SISTEMÁTICO.</p>
+        <p>BRUTO. RÚSTICO. SISTEMÁTICO.</p>
     </section>
 
     <section id="vantagens">
@@ -76,7 +79,7 @@
 
     <section id="seguranca">
         <div class="safety-strip">
-            <div style="width: 100px; height: 100px; border: 5px solid var(--danger); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Special Elite'; color: var(--danger); font-weight: bold; transform: rotate(-15deg); text-align: center;">ALVARÁ</div>
+            <div class ="alvara">ALVARÁ</div>
             <div>
                 <h2>SEGURANÇA SISTEMÁTICA</h2>
                 <p>Espaço adequado às normas vigentes de proteção.</p>
@@ -88,9 +91,9 @@
         <h2 class="section-title">// AGENDA</h2>
         <div class="cal-wrapper">
             <div class="cal-header">
-                <button class="btn-cal" onclick="changeMonth(-1)">&lt;</button>
+                <button type="button" class="btn-cal" id="prevMonth">&lt;</button>
                 <div id="monthDisplay"></div>
-                <button class="btn-cal" onclick="changeMonth(1)">&gt;</button>
+                <button type="button" class="btn-cal" id="nextMonth">&gt;</button>
             </div>
             <div class="cal-grid" id="calendarGrid"></div>
         </div>
@@ -99,14 +102,14 @@
     <footer>
         <div class="footer-grid">
             <div>
-                <div style="font-family: 'Special Elite'; font-size: 2rem; color: var(--accent-gold); margin-bottom: 20px;">RUSTIKCG</div>
+                <div class="footer-info">RUSTIKCG</div>
                 <p>Campo Grande, MS | (67) 9 9988-7766</p>
             </div>
             <div>
                 <h3>NEWSLETTER</h3>
                 <p>Receba datas disponíveis.</p>
                 <input type="text" placeholder="Seu e-mail" class="news-input">
-                <button class="btn-login-bruto" style="width: 100%;">CADASTRAR</button>
+                <button class="btn-login-bruto btn-login-bruto-newsletter">CADASTRAR</button>
             </div>
             <div>
                 <h3>REGRAS</h3>

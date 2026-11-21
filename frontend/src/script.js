@@ -3,6 +3,16 @@ function toggleMenu() {
     if (mobileNav) mobileNav.classList.toggle('active');
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const triggers = document.querySelectorAll('.menu-toggle, .close-menu, #mobileNav a[href^="#"]');
+    triggers.forEach((el) => {
+        el.addEventListener('click', toggleMenu)
+    });
+
+    document.getElementById('prevMonth')?.addEventListener('click', () => changeMonth(-1));
+    document.getElementById('nextMonth')?.addEventListener('click', () => changeMonth(1));
+});
+
 // =========================================================
 // CALENDÁRIO DA HOMEPAGE
 // =========================================================
