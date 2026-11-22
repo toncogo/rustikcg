@@ -1,13 +1,14 @@
 FROM node:22-alpine
 
+ENV NODE_ENV=production
 WORKDIR /app
 
 COPY package*.json ./
+RUN npm ci --omit=dev && npm cache clean --force
 
-RUN npm ci --omit=dev
+COPY --chown=node:node . .
 
-COPY . .
+USER node
 
 EXPOSE 8000
-
 CMD ["npm", "start"]

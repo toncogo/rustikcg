@@ -4,76 +4,85 @@ services:
     build:
       context: ./frontend
     container_name: rustikcg_frontend
-
     ports:
-      - "8000:80"
-
-    # environment:
-    #   API_URL: http://backend:8000
-
+      - "8080:80"
     depends_on:
-      - backend
-
+      backend:
+        condition: service_healthy
     networks:
       - frontend_network
-
     restart: unless-stopped
+    # environment:
+    #   API_URL: http://backend:8000
 
 
   backend:
     build:
       context: ./backend
     container_name: rustikcg_backend
-
+    env_file:
+      - .env
     environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: "8000"
+
+      # Usadas pelo código de autenticação
       DATABASE_HOST: db
-      DATABASE_PORT: 5432
+      DATABASE_PORT: "5432"
       DATABASE_NAME: ${POSTGRES_DB}
       DATABASE_USER: ${POSTGRES_USER}
       DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
-
     depends_on:
       db:
         condition: service_healthy
-
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8000/api/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
     networks:
       - frontend_network
       - backend_network
-
     restart: unless-stopped
 
 
   db:
     image: postgres:17-alpine
     container_name: rustikcg_postgres
-
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
+      - ./backend/src/database/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
     networks:
       - backend_network
-
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 10s
       timeout: 5s
       retries: 5
-
     restart: unless-stopped
 
 
+  mailpit:
+    image: axllent/mailpit:latest
+    profiles:
+      - dev-mail
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8025:8025"
+    expose:
+      - "1025"
+    networks:
+      - backend_network
+
 networks:
-
   frontend_network:
-
   backend_network:
     internal: true
-
 
 volumes:
   postgres_data:
