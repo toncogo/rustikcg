@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3b2b20">
+  <title>Criar conta | RustikCG</title>
+  <link rel="stylesheet" href="assets/css/teste.css">
+  <script src="assets/js/api.js" defer></script>
+  <script src="assets/js/reigstro.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/login.html" aria-label="RustikCG, página inicial">
+      <span class="brand-mark" aria-hidden="true">R</span>
+      <span>Rustik<span>CG</span></span>
+    </a>
+    <nav aria-label="Navegação principal">
+      <a href="../src/login.html">Entrar</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="form-card wide-card" aria-labelledby="page-title">
+      <p class="eyebrow">Sua próxima celebração começa aqui</p>
+      <h1 id="page-title">Crie sua conta</h1>
+      <p class="intro">Cadastre seus dados para acompanhar locações e eventos no RustikCG.</p>
+      <div id="form-message" class="status-message" role="status" aria-live="polite" hidden></div>
+
+      <form id="register-form" novalidate>
+        <div class="form-grid">
+          <label class="field">
+            <span>Nome completo</span>
+            <input name="name" autocomplete="name" maxlength="100" required>
+          </label>
+          <label class="field">
+            <span>E-mail</span>
+            <input name="email" type="email" autocomplete="email" maxlength="254" required>
+          </label>
+          <label class="field">
+            <span>Telefone</span>
+            <input name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="(67) 99999-9999" required>
+          </label>
+          <label class="field">
+            <span>Profissão</span>
+            <input name="profession" autocomplete="organization-title" maxlength="100" required>
+          </label>
+          <label class="field">
+            <span>Cidade</span>
+            <input name="city" autocomplete="address-level2" maxlength="100" required>
+          </label>
+          <label class="field">
+            <span>Estado</span>
+            <select name="state" autocomplete="address-level1" required>
+              <option value="">Selecione</option>
+              <option value="AC">Acre</option><option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option><option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option><option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option><option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option><option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option><option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option><option value="PA">Pará</option>
+              <option value="PB">Paraíba</option><option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option><option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option><option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option><option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option><option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option><option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </select>
+          </label>
+          <label class="field full-width">
+            <span>Endereço</span>
+            <input name="address" autocomplete="street-address" maxlength="300" required>
+          </label>
+          <label class="field full-width">
+            <span>Senha</span>
+            <input name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128"
+              pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{12,128}" required>
+            <small>Use ao menos 12 caracteres, com maiúscula, minúscula, número e símbolo.</small>
+          </label>
+        </div>
+        <button class="button primary-button" type="submit">Criar conta</button>
+      </form>
+      <p class="form-footer">Já tem uma conta? <a href="../src/login.html">Entrar</a></p>
+    </section>
+  </main>
+  <footer class="site-footer">RustikCG <span aria-hidden="true">·</span> Espaços para bons encontros</footer>
+</body>
+</html>

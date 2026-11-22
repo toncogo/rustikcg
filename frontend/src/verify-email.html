@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3b2b20">
+  <title>Confirmar e-mail | RustikCG</title>
+  <link rel="stylesheet" href="assets/css/teste.css">
+  <script src="assets/js/api.js" defer></script>
+  <script src="assets/js/verify-email.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../src/login.html" aria-label="RustikCG, página inicial">
+      <span class="brand-mark" aria-hidden="true">R</span>
+      <span>Rustik<span>CG</span></span>
+    </a>
+    <nav aria-label="Navegação principal"><a href="../src/login.html">Entrar</a></nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="form-card narrow-card" aria-labelledby="page-title">
+      <p class="eyebrow">Só falta confirmar</p>
+      <h1 id="page-title">Verifique seu e-mail</h1>
+      <p class="intro">Digite o código de seis dígitos enviado para o endereço usado no cadastro. O código vale por 15 minutos.</p>
+      <div id="form-message" class="status-message" role="status" aria-live="polite" hidden></div>
+      <form id="verify-email-form" novalidate>
+        <label class="field">
+          <span>E-mail</span>
+          <input name="email" type="email" autocomplete="email" maxlength="254" required>
+        </label>
+        <label class="field token-field">
+          <span>Código de confirmação</span>
+          <input name="token" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" minlength="6" maxlength="6" placeholder="000000" required>
+        </label>
+        <button class="button primary-button" type="submit">Confirmar e-mail</button>
+      </form>
+      <button id="resend-button" class="button secondary-button" type="button">Reenviar código</button>
+      <p class="form-footer">Já confirmou? <a href="../src/login.html">Ir para o login</a></p>
+    </section>
+  </main>
+  <footer class="site-footer">RustikCG <span aria-hidden="true">·</span> Espaços para bons encontros</footer>
+</body>
+</html>
