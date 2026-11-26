@@ -1,11 +1,16 @@
 const rateLimit = require('express-rate-limit');
 
+const isRateLimitDisabled =
+  process.env.NODE_ENV !== 'production' ||
+  process.env.DISABLE_RATE_LIMIT === 'true';
+
 function authRateLimit(max, windowMs) {
   return rateLimit({
     windowMs,
     limit: max,
     standardHeaders: 'draft-8',
     legacyHeaders: false,
+    skip: () => isRateLimitDisabled,
     handler(req, res) {
       res.status(429).json({
         error: 'TOO_MANY_REQUESTS',

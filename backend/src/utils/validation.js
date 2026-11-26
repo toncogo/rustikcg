@@ -1,7 +1,7 @@
 const HttpError = require('./http-error');
 
 const REGISTRATION_FIELDS = new Set([
-  'name', 'email', 'password', 'phone', 'city', 'state', 'address', 'profession'
+  'name', 'email', 'password', 'phone', 'city', 'state', 'address', 'profession', 'cpf'
 ]);
 const PROFILE_FIELDS = new Set([
   'name', 'phone', 'city', 'state', 'address', 'profession', 'avatar_url'
@@ -47,6 +47,29 @@ function normalizeEmail(value, errors) {
   return email;
 }
 
+function normalizeCpf(value, errors) {
+  const input = typeof value === 'string' ? value.trim() : '';
+  if (!/^(?:[0-9]{11}|[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2})$/u.test(input)) {
+    errors.cpf = 'Informe um CPF válido com 11 dígitos.';
+    return '';
+  }
+
+  const cpf = input.replace(/[.-]/gu, '');
+  const digits = Array.from(cpf, Number);
+  const matchesCheckDigit = (length) => {
+    const sum = digits.slice(0, length).reduce(
+      (total, digit, index) => total + digit * (length + 1 - index),
+      0
+    );
+    return (sum * 10) % 11 % 10 === digits[length];
+  };
+
+  if (/^([0-9])\1{10}$/u.test(cpf) || !matchesCheckDigit(9) || !matchesCheckDigit(10)) {
+    errors.cpf = 'Informe um CPF válido.';
+  }
+  return cpf;
+}
+
 function finish(errors, value) {
   if (Object.keys(errors).length) {
     throw new HttpError(400, 'VALIDATION_ERROR', 'Revise os campos destacados.', { fields: errors });
@@ -67,6 +90,7 @@ function validateRegistration(body) {
   const value = {
     name: cleanText(body.name, 'name', 2, 100, errors, /^[\p{L}\p{M}\s.'’-]+$/u),
     email: normalizeEmail(body.email, errors),
+    cpf: normalizeCpf(body.cpf, errors),
     phone: cleanText(body.phone, 'phone', 8, 30, errors, /^\+?[0-9\s().-]+$/u),
     city: cleanText(body.city, 'city', 2, 100, errors),
     state: typeof body.state === 'string' ? body.state.trim().toUpperCase() : '',

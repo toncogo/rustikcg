@@ -52,11 +52,11 @@ async function register(input) {
 
   const delivery = await withTransaction(async (client) => {
     const inserted = await client.query(
-      'INSERT INTO users (name, email, password_hash, phone, city, state, address, profession) ' +
-      'VALUES ($1, $2, $3, $4, $5, $6, $7, $8) ' +
+      'INSERT INTO users (name, email, password_hash, phone, city, state, address, profession, cpf) ' +
+      'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) ' +
       'ON CONFLICT (email) DO NOTHING ' +
       'RETURNING id, name, email, email_verified',
-      [input.name, input.email, passwordHash, input.phone, input.city, input.state, input.address, input.profession]
+      [input.name, input.email, passwordHash, input.phone, input.city, input.state, input.address, input.profession, input.cpf]
     );
 
     let user = inserted.rows[0];
