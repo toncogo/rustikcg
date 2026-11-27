@@ -3,92 +3,107 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#3b2b20">
+  <meta name="theme-color" content="#140f0b">
   <title>Criar conta | RustikCG</title>
-  <link rel="stylesheet" href="assets/css/teste.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Staatliches&family=Roboto+Mono:wght@400;700&display=swap">
   <script src="assets/js/api.js" defer></script>
-  <script src="assets/js/reigstro.js" defer></script>
+  <script src="assets/js/register.js" defer></script>
 </head>
-<body>
-  <header class="site-header">
-    <a class="brand" href="/login.html" aria-label="RustikCG, página inicial">
-      <span class="brand-mark" aria-hidden="true">R</span>
-      <span>Rustik<span>CG</span></span>
-    </a>
-    <nav aria-label="Navegação principal">
-      <a href="../src/login.html">Entrar</a>
-    </nav>
-  </header>
+<body class="internal-page register-page">
+  <main class="login-main register-main">
+    <a class="btn-outline-rustik register-home" href="index.html">Voltar à página inicial</a>
+    <section class="login-shell register-shell" aria-labelledby="page-title">
+      <div class="login-visual">
+        <a class="register-brand" href="index.html" aria-label="RustikCG, página inicial">
+          <img src="rustikcg-logo.png" alt="" width="100" height="100">
+        </a>
+      </div>
 
-  <main class="page-shell">
-    <section class="form-card wide-card" aria-labelledby="page-title">
-      <p class="eyebrow">Sua próxima celebração começa aqui</p>
-      <h1 id="page-title">Crie sua conta</h1>
-      <p class="intro">Cadastre seus dados para acompanhar locações e eventos no RustikCG.</p>
-      <div id="form-message" class="status-message" role="status" aria-live="polite" hidden></div>
-
-      <form id="register-form" novalidate>
-        <div class="form-grid">
-          <label class="field">
-            <span>Nome completo</span>
-            <input name="name" autocomplete="name" maxlength="100" required>
-          </label>
-          <label class="field">
-            <span>E-mail</span>
-            <input name="email" type="email" autocomplete="email" maxlength="254" required>
-          </label>
-          <label>
-            CPF
-            <input name="cpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" required>
-          </label>
-          <label class="field">
-            <span>Telefone</span>
-            <input name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="(67) 99999-9999" required>
-          </label>
-          <label class="field">
-            <span>Profissão</span>
-            <input name="profession" autocomplete="organization-title" maxlength="100" required>
-          </label>
-          <label class="field">
-            <span>Cidade</span>
-            <input name="city" autocomplete="address-level2" maxlength="100" required>
-          </label>
-          <label class="field">
-            <span>Estado</span>
-            <select name="state" autocomplete="address-level1" required>
-              <option value="">Selecione</option>
-              <option value="AC">Acre</option><option value="AL">Alagoas</option>
-              <option value="AP">Amapá</option><option value="AM">Amazonas</option>
-              <option value="BA">Bahia</option><option value="CE">Ceará</option>
-              <option value="DF">Distrito Federal</option><option value="ES">Espírito Santo</option>
-              <option value="GO">Goiás</option><option value="MA">Maranhão</option>
-              <option value="MT">Mato Grosso</option><option value="MS">Mato Grosso do Sul</option>
-              <option value="MG">Minas Gerais</option><option value="PA">Pará</option>
-              <option value="PB">Paraíba</option><option value="PR">Paraná</option>
-              <option value="PE">Pernambuco</option><option value="PI">Piauí</option>
-              <option value="RJ">Rio de Janeiro</option><option value="RN">Rio Grande do Norte</option>
-              <option value="RS">Rio Grande do Sul</option><option value="RO">Rondônia</option>
-              <option value="RR">Roraima</option><option value="SC">Santa Catarina</option>
-              <option value="SP">São Paulo</option><option value="SE">Sergipe</option>
-              <option value="TO">Tocantins</option>
-            </select>
-          </label>
-          <label class="field full-width">
-            <span>Endereço</span>
-            <input name="address" autocomplete="street-address" maxlength="300" required>
-          </label>
-          <label class="field full-width">
-            <span>Senha</span>
-            <input name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128"
-              pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{12,128}" required>
-            <small>Use ao menos 12 caracteres, com maiúscula, minúscula, número e símbolo.</small>
-          </label>
+      <div class="login-card register-card">
+        <div class="login-card-heading">
+          <h1 id="page-title">Crie sua conta</h1>
+          <p>Cadastre-se para acompanhar suas locações no RustikCG.</p>
         </div>
-        <button class="button primary-button" type="submit">Criar conta</button>
-      </form>
-      <p class="form-footer">Já tem uma conta? <a href="../src/login.html">Entrar</a></p>
+
+        <form id="register-form" method="post" novalidate>
+          <fieldset class="register-group">
+            <legend>Dados pessoais</legend>
+            <div class="register-grid">
+              <div class="form-field register-full">
+                <label for="register-name">Nome completo</label>
+                <input id="register-name" name="name" autocomplete="name" maxlength="100" required>
+              </div>
+              <div class="form-field">
+                <label for="register-cpf">CPF</label>
+                <input id="register-cpf" name="cpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" required>
+              </div>
+              <div class="form-field">
+                <label for="register-profession">Profissão</label>
+                <input id="register-profession" name="profession" autocomplete="organization-title" maxlength="100" required>
+              </div>
+              <div class="form-field">
+                <label for="register-email">E-mail</label>
+                <input id="register-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+              </div>
+              <div class="form-field">
+                <label for="register-phone">Telefone</label>
+                <input id="register-phone" name="phone" type="tel" autocomplete="tel" maxlength="30" placeholder="(67) 99999-9999" required>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="register-group">
+            <legend>Localização</legend>
+            <div class="register-grid">
+              <div class="form-field register-full">
+                <label for="register-address">Endereço</label>
+                <input id="register-address" name="address" autocomplete="street-address" maxlength="300" required>
+              </div>
+              <div class="form-field">
+                <label for="register-city">Cidade</label>
+                <input id="register-city" name="city" autocomplete="address-level2" maxlength="100" required>
+              </div>
+              <div class="form-field">
+                <label for="register-state">Estado</label>
+                <select id="register-state" name="state" autocomplete="address-level1" required>
+                  <option value="">Selecione</option>
+                  <option value="AC">Acre</option><option value="AL">Alagoas</option>
+                  <option value="AP">Amapá</option><option value="AM">Amazonas</option>
+                  <option value="BA">Bahia</option><option value="CE">Ceará</option>
+                  <option value="DF">Distrito Federal</option><option value="ES">Espírito Santo</option>
+                  <option value="GO">Goiás</option><option value="MA">Maranhão</option>
+                  <option value="MT">Mato Grosso</option><option value="MS">Mato Grosso do Sul</option>
+                  <option value="MG">Minas Gerais</option><option value="PA">Pará</option>
+                  <option value="PB">Paraíba</option><option value="PR">Paraná</option>
+                  <option value="PE">Pernambuco</option><option value="PI">Piauí</option>
+                  <option value="RJ">Rio de Janeiro</option><option value="RN">Rio Grande do Norte</option>
+                  <option value="RS">Rio Grande do Sul</option><option value="RO">Rondônia</option>
+                  <option value="RR">Roraima</option><option value="SC">Santa Catarina</option>
+                  <option value="SP">São Paulo</option><option value="SE">Sergipe</option>
+                  <option value="TO">Tocantins</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="register-group">
+            <legend>Acesso à conta</legend>
+            <div class="form-field">
+              <label for="register-password">Senha</label>
+              <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128"
+                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{12,128}" aria-describedby="register-password-help" required>
+              <small id="register-password-help">Use ao menos 12 caracteres, com letra maiúscula, minúscula, número e símbolo.</small>
+            </div>
+          </fieldset>
+
+          <div id="form-message" class="register-feedback" role="status" aria-live="polite" hidden></div>
+          <button class="btn-rustik-primary" type="submit">Criar conta</button>
+        </form>
+
+        <p class="register-signin">Já tem uma conta? <a class="text-link" href="login.html">Entrar</a></p>
+      </div>
     </section>
   </main>
-  <footer class="site-footer">RustikCG <span aria-hidden="true">·</span> Espaços para bons encontros</footer>
 </body>
 </html>

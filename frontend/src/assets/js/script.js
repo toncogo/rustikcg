@@ -67,12 +67,10 @@ function changeMonth(step) {
 build();
 
 // =========================================================
-// LOGIN — protótipo front-end
+// VISIBILIDADE DA SENHA
 // =========================================================
-const loginForm = document.getElementById('loginForm');
 const passwordToggle = document.getElementById('passwordToggle');
 const passwordInput = document.getElementById('password');
-const loginFeedback = document.getElementById('loginFeedback');
 
 if (passwordToggle && passwordInput) {
     passwordToggle.addEventListener('click', () => {
@@ -80,20 +78,6 @@ if (passwordToggle && passwordInput) {
         passwordInput.type = showPassword ? 'text' : 'password';
         passwordToggle.textContent = showPassword ? 'OCULTAR' : 'MOSTRAR';
         passwordToggle.setAttribute('aria-label', showPassword ? 'Ocultar senha' : 'Mostrar senha');
-    });
-}
-
-if (loginForm) {
-    loginForm.addEventListener('submit', event => {
-        event.preventDefault();
-        if (!loginForm.checkValidity()) {
-            loginForm.reportValidity();
-            return;
-        }
-
-        if (loginFeedback) loginFeedback.textContent = 'ACESSO AUTORIZADO — REDIRECIONANDO...';
-        localStorage.setItem('rustikcgLoggedIn', 'true');
-        window.location.href = 'perfil.html';
     });
 }
 
@@ -157,12 +141,5 @@ if (profileForm) {
     profileForm.addEventListener('submit', event => {
         event.preventDefault();
         setProfileEditing(false);
-    });
-}
-
-const logoutButton = document.getElementById('logoutButton');
-if (logoutButton) {
-    logoutButton.addEventListener('click', () => {
-        localStorage.removeItem('rustikcgLoggedIn');
     });
 }

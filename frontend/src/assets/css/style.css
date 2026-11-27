@@ -374,7 +374,7 @@ footer {
     background:
         linear-gradient(180deg, rgba(10,8,6,.16), rgba(10,8,6,.91)),
         linear-gradient(90deg, rgba(10,8,6,.2), rgba(10,8,6,.55)),
-        url('fotos/rustik3.jpg') center/cover no-repeat;
+        url('../../fotos/rustik3.jpg') center/cover no-repeat;
 }
 
 .login-visual::after {
@@ -435,7 +435,7 @@ footer {
     position: relative;
 }
 
-.login-card-heading h2 {
+.login-card-heading :is(h1, h2) {
     color: #e2c7a3;
     font-size: 2.35rem;
     margin: 6px 0 4px;
@@ -446,7 +446,7 @@ footer {
     font-size: .85rem;
 }
 
-.auth-form {
+.auth-form:not([hidden]) {
     margin-top: 38px;
 }
 
@@ -610,6 +610,13 @@ footer {
     color: #9a754c;
     font-family: 'Staatliches', sans-serif;
     letter-spacing: 1.5px;
+}
+
+.login-register-link {
+    align-self: flex-start;
+    margin-top: 8px;
+    font-size: .85rem;
+    text-decoration: underline;
 }
 
 /* DASHBOARD */
@@ -1238,7 +1245,7 @@ footer {
         padding: 35px 22px;
     }
 
-    .login-card-heading h2 {
+    .login-card-heading :is(h1, h2) {
         font-size: 1.9rem;
     }
 
@@ -1274,4 +1281,166 @@ button.menu-toggle,
 button.close-menu {
     border: 0;
     background: transparent;
+}
+
+/* Cadastro */
+.login-main.register-main {
+    min-height: 100vh;
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+
+.register-home {
+    display: none;
+}
+
+@media (min-width: 761px) {
+    .login-main.register-main {
+        display: grid;
+        grid-template-columns: minmax(0, 1120px);
+        align-content: center;
+        gap: 16px;
+    }
+
+    .register-shell {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .register-home {
+        display: inline-flex;
+        align-items: center;
+        justify-self: start;
+        text-decoration: none;
+        position: relative;
+    }
+
+    .register-shell .register-brand {
+        display: none;
+    }
+}
+
+.register-brand {
+    display: inline-flex;
+    z-index: 1;
+}
+
+.register-brand img {
+    object-fit: contain;
+}
+
+.register-card {
+    min-width: 0;
+}
+
+.register-card .login-card-heading {
+    margin-bottom: 26px;
+}
+
+.register-card .login-card-heading p {
+    color: var(--paper);
+}
+
+.register-group {
+    min-width: 0;
+    margin-bottom: 24px;
+    border: 0;
+}
+
+.register-group legend {
+    width: 100%;
+    margin-bottom: 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #443429;
+    color: #d9a850;
+    font: 1.15rem 'Staatliches', sans-serif;
+    letter-spacing: 1.5px;
+}
+
+.register-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 16px;
+}
+
+.register-full {
+    grid-column: 1 / -1;
+}
+
+.register-card .form-field {
+    min-width: 0;
+    margin: 0;
+}
+
+.register-card .form-field input,
+.register-card .form-field select {
+    height: 44px;
+    font-size: .9rem;
+}
+
+.register-card select {
+    width: 100%;
+    padding: 0 12px;
+    border: 1px solid #36312b;
+    border-left: 3px solid #6b3b1d;
+    background: #0e0e0d;
+    color: #e1c9aa;
+    font-family: inherit;
+    color-scheme: dark;
+}
+
+.register-card select:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+}
+
+.register-card small {
+    display: block;
+    margin-top: 6px;
+    font-size: .75rem;
+}
+
+.register-feedback {
+    margin-bottom: 14px;
+    padding: 10px 14px;
+    border: 1px solid #675332;
+    font-size: .85rem;
+    overflow-wrap: anywhere;
+}
+
+.register-feedback[data-kind="error"] {
+    border-color: var(--danger);
+    color: #f2b3a7;
+}
+
+.register-feedback ul {
+    padding-left: 20px;
+}
+
+.register-card .btn-rustik-primary:disabled {
+    cursor: wait;
+    opacity: .65;
+}
+
+.register-signin {
+    margin-top: 18px;
+    text-align: center;
+    font-size: .85rem;
+}
+
+.register-signin a {
+    color: #d9a850;
+    text-decoration: underline;
+}
+
+@media (max-width: 760px) {
+    .login-main.register-main {
+        padding-top: 24px;
+        padding-bottom: 32px;
+    }
+}
+
+@media (max-width: 500px) {
+    .register-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
 }
