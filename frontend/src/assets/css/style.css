@@ -446,7 +446,7 @@ footer {
     font-size: .85rem;
 }
 
-.auth-form {
+.auth-form:not([hidden]) {
     margin-top: 38px;
 }
 

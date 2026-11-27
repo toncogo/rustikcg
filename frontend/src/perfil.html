@@ -23,9 +23,9 @@
             <nav class="nav-links">
                 <a href="index.html#galeria">Galeria</a>
                 <a href="index.html#agenda">Agenda</a>
-                <a class="btn-login-bruto is-active" href="perfil.html">Painel</a>
+                <a class="btn-login-bruto" href="login.html" data-panel-link>PAINEL</a>
             </nav>
-            <button class="menu-toggle" type="button" aria-label="Abrir menu" onclick="toggleMenu()">
+            <button class="menu-toggle" type="button" aria-label="Abrir menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -40,7 +40,7 @@
         <a href="index.html#itens">INVENTÁRIO</a>
         <a href="index.html#galeria">GALERIA</a>
         <a href="index.html#agenda">AGENDA</a>
-        <a class="btn-login-bruto" href="perfil.html">PAINEL</a>
+        <a class="btn-login-bruto" href="login.html" data-panel-link>PAINEL</a>
     </div>
 
     <main class="dashboard-main">
@@ -79,6 +79,7 @@
                         <span class="sidebar-icon" aria-hidden="true">↪</span>
                         <span>SAIR</span>
                     </a>
+                    <small class="logout-feedback" role="status" hidden></small>
                 </nav>
 
                 <div class="sidebar-note">
@@ -238,6 +239,8 @@
         </div>
     </footer>
 
+    <script src="assets/js/api.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/header-auth.js?v=panel-only"></script>
 </body>
 </html>
