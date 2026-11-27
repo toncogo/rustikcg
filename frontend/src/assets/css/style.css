@@ -446,6 +446,34 @@ footer {
     font-size: .85rem;
 }
 
+.login-tabs {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.login-tab {
+    min-height: 44px;
+    padding: 8px;
+    border: 1px solid #6b3b1d;
+    background: #14120f;
+    color: var(--paper);
+    font: 1rem 'Staatliches', sans-serif;
+    cursor: pointer;
+}
+
+.login-tab[aria-selected="true"] {
+    border-color: var(--accent-gold);
+    background: #352519;
+    color: #f1d8b6;
+}
+
+.login-tab:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+}
+
 .auth-form:not([hidden]) {
     margin-top: 38px;
 }
@@ -1397,6 +1425,95 @@ button.close-menu {
     display: block;
     margin-top: 6px;
     font-size: .75rem;
+}
+
+.register-card input[type="date"] {
+    color-scheme: dark;
+}
+
+.register-password-control {
+    position: relative;
+}
+
+.register-card .register-password-control input {
+    padding-right: 48px;
+}
+
+.register-password-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--paper);
+    cursor: pointer;
+}
+
+.register-password-toggle:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: -3px;
+}
+
+.register-eye {
+    display: grid;
+    place-items: center;
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-radius: 75% 0;
+    transform: rotate(45deg);
+}
+
+.register-eye::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.register-password-toggle[aria-pressed="true"] .register-eye::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 24px;
+    background: currentColor;
+    box-shadow: 2px 0 #0e0e0d;
+}
+
+.register-strength-track {
+    height: 8px;
+    margin-top: 10px;
+    overflow: hidden;
+    border: 1px solid #8a6a48;
+    border-radius: 4px;
+    background: #211a14;
+}
+
+#register-strength-bar {
+    display: block;
+    height: 100%;
+    width: 0;
+}
+
+#register-strength-bar[data-level="weak"] {
+    width: 33%;
+    background: #ec5656;
+}
+
+#register-strength-bar[data-level="medium"] {
+    width: 67%;
+    background: #f29a44;
+}
+
+#register-strength-bar[data-level="strong"] {
+    width: 100%;
+    background: #66ba77;
 }
 
 .register-feedback {

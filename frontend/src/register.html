@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#140f0b">
   <title>Criar conta | RustikCG</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=registration-strength-2">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Staatliches&family=Roboto+Mono:wght@400;700&display=swap">
   <script src="assets/js/api.js" defer></script>
-  <script src="assets/js/register.js" defer></script>
+  <script src="assets/js/register.js?v=registration-strength-2" defer></script>
 </head>
 <body class="internal-page register-page">
   <main class="login-main register-main">
@@ -41,6 +41,10 @@
               <div class="form-field">
                 <label for="register-profession">Profissão</label>
                 <input id="register-profession" name="profession" autocomplete="organization-title" maxlength="100" required>
+              </div>
+              <div class="form-field register-full">
+                <label for="register-birth-date">Data de nascimento</label>
+                <input id="register-birth-date" name="birth_date" type="date" autocomplete="bday" min="0001-01-01" required>
               </div>
               <div class="form-field">
                 <label for="register-email">E-mail</label>
@@ -89,11 +93,29 @@
 
           <fieldset class="register-group">
             <legend>Acesso à conta</legend>
-            <div class="form-field">
-              <label for="register-password">Senha</label>
-              <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128"
-                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{12,128}" aria-describedby="register-password-help" required>
-              <small id="register-password-help">Use ao menos 12 caracteres, com letra maiúscula, minúscula, número e símbolo.</small>
+            <div class="register-grid">
+              <div class="form-field register-full">
+                <label for="register-password">Senha</label>
+                <div class="register-password-control">
+                  <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128"
+                    pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{12,128}" aria-describedby="register-password-help register-password-strength" required>
+                  <button class="register-password-toggle" type="button" aria-controls="register-password" aria-label="Mostrar senha" aria-pressed="false">
+                    <span class="register-eye" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="register-strength-track" aria-hidden="true"><span id="register-strength-bar"></span></div>
+                <small id="register-password-strength" role="status">Força da senha</small>
+                <small id="register-password-help">Use ao menos 12 caracteres, com letra maiúscula, minúscula, número e símbolo.</small>
+              </div>
+              <div class="form-field register-full">
+                <label for="register-password-confirmation">Confirme a senha</label>
+                <div class="register-password-control">
+                  <input id="register-password-confirmation" type="password" autocomplete="new-password" maxlength="128" required>
+                  <button class="register-password-toggle" type="button" aria-controls="register-password-confirmation" aria-label="Mostrar confirmação da senha" aria-pressed="false">
+                    <span class="register-eye" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </div>
             </div>
           </fieldset>
 
