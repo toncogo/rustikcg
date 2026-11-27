@@ -80,8 +80,12 @@ The header and mobile menu must dynamically adapt to the user's session state:
 ## 6. Code Quality & Conventions
 - Wrap standalone scripts in an IIFE `(function () { ... })();` to avoid polluting the global scope (unless explicitly attaching a shared namespace like `window.RustikApi`).
 - Use semantic HTML (`<header>`, `<nav>`, `<main>`, `<section>`, `<button type="button">` for non-submit actions) and accessible attributes (`aria-label`, `role="status"`, `aria-live="polite"`).
-- Keep changes minimal, focused, and aligned with existing class names in `assets/css/style.css`.instrua o agente a apenas fazer commits locais na própria branch. Nunca deixe o agente rodar git merge, git rebase, git push --force ou git reset --hard
+- Keep changes minimal, focused, and aligned with existing class names in `assets/css/style.css`.
+
+---
 
 ## 7. Git & Worktree Safety
 
-Restrict all Git operations to **local commits on the current branch only** (following Conventional Commits). Never push to remote repositories, switch branches, or alter commit history. Specifically, **do not run** `git merge`, `git rebase`, `git push`, `git push --force`, `git reset --hard`, or `git clean -fd`—branch integration, conflict resolution, and cleanup are handled manually by the maintainer.
+**Write Scope & Read-Only Backend Policy:** Limit all file creations, edits, and deletions strictly to `frontend/src/` within the current worktree. You may **read** files in `backend/` (and root configuration files) within this worktree strictly as a reference to inspect API endpoints, payloads, status codes, or validation rules, but you must **never write to, modify, create, or delete** any file inside `backend/`, shared root files (such as `docker-compose*.yml`, `nginx.conf`, or `.env*`), or any path outside the current worktree (`../`). If a frontend change requires a backend or infrastructure update, do not edit those files—document the required change in your response so the maintainer or backend agent can apply it separately without merge conflicts.
+
+**Git Operations:** Restrict all Git operations to **local commits on the current branch only** (following Conventional Commits). Never push to remote repositories, switch branches, or alter commit history. Specifically, **do not run** `git merge`, `git rebase`, `git push`, `git push --force`, `git reset --hard`, or `git clean -fd`—branch integration, conflict resolution, and cleanup are handled manually by the maintainer.

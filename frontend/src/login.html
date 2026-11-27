@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Acesse o painel do cliente RustikCG para consultar seu perfil e histórico de locações.">
     <title>Login | RustikCG</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=login-tabs">
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Staatliches&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <style>
@@ -34,39 +34,49 @@
                     <p>Informe seus dados para acessar sua área.</p>
                 </div>
 
-                <form id="loginForm" class="auth-form" method="post">
-                    <div class="form-field">
-                        <label for="email">E-MAIL</label>
-                        <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required>
-                    </div>
+                <div class="login-tabs" role="tablist" aria-label="Opções de acesso">
+                    <button class="login-tab" type="button" role="tab" id="loginEmailTab" aria-selected="true" aria-controls="loginEmailPanel">E-mail</button>
+                    <button class="login-tab" type="button" role="tab" id="loginTwoFactorTab" aria-selected="false" aria-controls="loginTwoFactorPanel" tabindex="-1">Autenticação em dois fatores (2FA)</button>
+                </div>
 
-                    <div class="form-field">
-                        <label for="password">SENHA</label>
-                        <div class="password-field">
-                            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" minlength="4" required>
-                            <button class="password-toggle" type="button" id="passwordToggle" aria-label="Mostrar senha">MOSTRAR</button>
+                <div id="loginEmailPanel" role="tabpanel" aria-labelledby="loginEmailTab">
+                    <form id="loginForm" class="auth-form" method="post">
+                        <div class="form-field">
+                            <label for="email">E-MAIL</label>
+                            <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required>
                         </div>
-                    </div>
 
-                    <div class="auth-options">
-                        <label class="check-option">
-                            <input type="checkbox" name="remember">
-                            <span>Manter conectado</span>
-                        </label>
-                        <a href="#" class="text-link" onclick="return false;">Esqueci minha senha</a>
-                    </div>
+                        <div class="form-field">
+                            <label for="password">SENHA</label>
+                            <div class="password-field">
+                                <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" minlength="4" required>
+                                <button class="password-toggle" type="button" id="passwordToggle" aria-label="Mostrar senha">MOSTRAR</button>
+                            </div>
+                        </div>
 
-                    <button class="btn-rustik-primary" type="submit">ENTRAR NO PAINEL <span aria-hidden="true">→</span></button>
-                </form>
+                        <div class="auth-options">
+                            <label class="check-option">
+                                <input type="checkbox" name="remember">
+                                <span>Manter conectado</span>
+                            </label>
+                            <a href="#" class="text-link" onclick="return false;">Esqueci minha senha</a>
+                        </div>
 
-                <form id="loginCodeForm" class="auth-form" method="post" hidden>
-                    <div class="form-field">
-                        <label for="loginCode">CÓDIGO DE ACESSO</label>
-                        <input id="loginCode" name="token" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required>
-                    </div>
-                    <button class="btn-rustik-primary" type="submit">CONFIRMAR CÓDIGO</button>
-                </form>
-                <p class="login-feedback" id="loginFeedback" role="status" aria-live="polite" hidden></p>
+                        <button class="btn-rustik-primary" type="submit">ENTRAR NO PAINEL <span aria-hidden="true">→</span></button>
+                    </form>
+
+                    <form id="loginCodeForm" class="auth-form" method="post" hidden>
+                        <div class="form-field">
+                            <label for="loginCode">CÓDIGO DE ACESSO</label>
+                            <input id="loginCode" name="token" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required>
+                        </div>
+                        <button class="btn-rustik-primary" type="submit">CONFIRMAR CÓDIGO</button>
+                    </form>
+                    <p class="login-feedback" id="loginFeedback" role="status" aria-live="polite" hidden></p>
+                </div>
+                <div id="loginTwoFactorPanel" role="tabpanel" aria-labelledby="loginTwoFactorTab" tabindex="0" hidden>
+                    <p>Em breve, você poderá ativar a autenticação em dois fatores no seu perfil.</p>
+                </div>
 
                 <div class="login-help">
                     <span>PRIMEIRO ACESSO?</span>
@@ -78,6 +88,6 @@
     </main>
     <script src="assets/js/api.js"></script>
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/login.js?v=session-check"></script>
+    <script src="assets/js/login.js?v=login-tabs"></script>
 </body>
 </html>

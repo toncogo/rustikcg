@@ -1,7 +1,7 @@
 const HttpError = require('./http-error');
 
 const REGISTRATION_FIELDS = new Set([
-  'name', 'email', 'password', 'phone', 'city', 'state', 'address', 'profession', 'cpf'
+  'name', 'email', 'password', 'phone', 'city', 'state', 'address', 'profession', 'cpf', 'birth_date'
 ]);
 const PROFILE_FIELDS = new Set([
   'name', 'phone', 'city', 'state', 'address', 'profession', 'avatar_url'
@@ -77,6 +77,20 @@ function finish(errors, value) {
   return value;
 }
 
+function validateBirthDate(value, errors) {
+  if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/u.test(value) &&
+      value >= '0001-01-01') {
+    const date = new Date(value + 'T00:00:00Z');
+    if (Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value &&
+        date <= new Date()) {
+      return value;
+    }
+  }
+
+  errors.birth_date = 'Informe uma data de nascimento válida que não esteja no futuro.';
+  return null;
+}
+
 function requireBody(body) {
   if (!isRecord(body)) {
     throw new HttpError(400, 'VALIDATION_ERROR', 'O corpo da solicitação precisa ser um objeto JSON.');
@@ -91,6 +105,7 @@ function validateRegistration(body) {
     name: cleanText(body.name, 'name', 2, 100, errors, /^[\p{L}\p{M}\s.'’-]+$/u),
     email: normalizeEmail(body.email, errors),
     cpf: normalizeCpf(body.cpf, errors),
+    birth_date: validateBirthDate(body.birth_date, errors),
     phone: cleanText(body.phone, 'phone', 8, 30, errors, /^\+?[0-9\s().-]+$/u),
     city: cleanText(body.city, 'city', 2, 100, errors),
     state: typeof body.state === 'string' ? body.state.trim().toUpperCase() : '',

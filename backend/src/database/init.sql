@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
   name VARCHAR(100) NOT NULL,
   email VARCHAR(254) NOT NULL UNIQUE,
   cpf VARCHAR(11) NOT NULL CONSTRAINT users_cpf_format CHECK (cpf ~ '^[0-9]{11}$'),
+  birth_date DATE NOT NULL,
   password_hash TEXT NOT NULL,
   phone VARCHAR(30) NOT NULL,
   city VARCHAR(100) NOT NULL,
